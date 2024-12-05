@@ -1,9 +1,11 @@
 import openai
 from config.settings import OPENAI_API_KEY, MODEL_NAME
 
+import json
+
 openai.api_key = OPENAI_API_KEY
 
-def generate_response(prompt, temperature=0.7, max_tokens=150):
+def generate_responses(prompt, temperature=0.7, max_tokens=150):
     try:
         response = openai.Completion.create(
             engine=MODEL_NAME,
@@ -15,3 +17,6 @@ def generate_response(prompt, temperature=0.7, max_tokens=150):
     except Exception as e:
         return f"An error occurred: {e}"
     
+def save_chat_history(history, file_path='data/chat_history.json'):
+    with open(file_path, 'w') as f:
+        json.dump(history, f, indent=4)

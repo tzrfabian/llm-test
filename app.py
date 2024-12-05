@@ -36,3 +36,31 @@
 
 ## Border of the app.py using hugging face model
 
+## using OPENAI API Model
+from helpers.openai_helper import generate_responses, save_chat_history
+import gradio as gr
+
+def chat_with_openai(user_input, history=[]):
+    """
+    LLM - ChatBot with OpenAI API
+    """
+
+    prompt = "\n".join([f"User: {item[0]}\nChatbot: {item[1]}" for item in history]) + f"\nUser: {user_input}\nChatbot:"
+    response = generate_responses(prompt)
+    history.append((user_input, response))
+    return history, history
+
+iface = gr.Interface(
+    fn=chat_with_openai,
+    inputs=["text", "state"],
+    outputs=["chatbot", "state"],
+    title="Chatbot LLM with OpenAI",
+    description="Chatbot using OpenAI's API.",
+    show_progress='minimal'
+)
+
+if __name__ == "__main__":
+    try:
+        iface.launch()
+    finally:
+        save_chat_history(history=[])
