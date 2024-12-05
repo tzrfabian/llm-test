@@ -1,3 +1,5 @@
 .gradio
 
 venv
+_pycache_
+.env
