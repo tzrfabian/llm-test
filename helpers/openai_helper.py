@@ -5,11 +5,16 @@ import json
 
 openai.api_key = OPENAI_API_KEY
 
-def generate_responses(prompt, temperature=0.7, max_tokens=150):
+def generate_responses(user_input, temperature=0.7, max_tokens=150):
     try:
-        response = openai.Completion.create(
-            engine=MODEL_NAME,
-            messages=[{"roles": "user", "content": prompt}],
+        messages = [
+            {"role": "system", "content": 'You are a helpful assistant.'},
+            {"role": "user", "content": user_input}
+        ]
+
+        response = openai.chat.completions.create(
+            model=MODEL_NAME,
+            messages=messages,
             temperature=temperature,
             max_tokens=max_tokens
         )
