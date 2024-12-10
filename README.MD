@@ -8,7 +8,7 @@ venv\Scripts\activate
 ```
 Install library
 ```sh
-pip install transformers torch accelerate gradio
+pip install transformers torch accelerate gradio openai
 ```
 
 ### Running App
