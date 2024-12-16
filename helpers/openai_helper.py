@@ -11,8 +11,14 @@ def generate_responses(user_input, temperature=0.7, max_tokens=50):
     """
     try:
         messages = [
-            {"role": "system", "content": "You are a helpful assistant."},
-            {"role": "user", "content": user_input}
+            {
+                "role": "system", 
+                "content": "You are a helpful assistant."
+            },
+            {
+                "role": "user", 
+                "content": user_input
+            }
         ]
 
         response = openai.chat.completions.create(
