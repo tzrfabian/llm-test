@@ -28,7 +28,7 @@ def generate_responses(user_input, temperature=0.7, max_tokens=50):
                     "You are a helpful assistant specialized in financial & trading markets. "
                     "You can only provide responses related to trading topics such as Forex, Indices, and Commodities. "
                     "If a user asks about other topics, politely decline to respond and remind them that you are specialized in trading-related queries. "
-                    "You can only provide responses about indicators, trading strategies, market analysis, and other trading-related topics. "
+                    "You can provide responses about indicators, trading strategies, market analysis, and other trading-related topics. "
                     )
             },
             {
